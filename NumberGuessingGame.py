@@ -8,7 +8,7 @@ Project 1 - Number Guessing Game
 import random
 
 
-def start_game():
+def start_game(count, numberToGuess):
     """Psuedo-code Hints
     
     When the program starts, we want to:
@@ -26,18 +26,12 @@ def start_game():
     ( You can add more features/enhancements if you'd like to. )
     """
     # Display intro message
-    count = 1;
-    print("Welcome to the Number Guessing Game!!")
-    numberToGuess = random.randint(0,10)
+    
     #Checking if user entered value is valid
     try:
         userGuess = int(input("Pick a number between 0 and 10 inclusive.\n"))  
-    #Non int entered or invalid one
-    except ValueError:
-        print("Please enter a valid value")
-    #Have a valid number at this point.
-    #Proceed with game
-    else:      
+        #Have a valid number at this point.
+        #Proceed with game
         while userGuess != numberToGuess:
             if userGuess < numberToGuess:
                 print("To low")
@@ -45,7 +39,7 @@ def start_game():
             else:
                 print("To high")
                 count+=1
-            userGuess = int(input("pick a number."))  
+            userGuess = int(input("pick a number.\n"))  
 
         if count < 2:
             print("Wow!! Can't believe you guessed it in {}".format(count)+ " try. You've got good luck")
@@ -53,9 +47,16 @@ def start_game():
             print("Nice. Guessed it in {}".format(count) + " tries. That's good luck.")
         else:
             print("Got it! It took about {}".format(count)+" times.")
-    #farewell
-    print("Give it another shot if you want to test your luck!")
-
-
+         #farewell
+        print("Give it another shot if you want to test your luck!")
+    #Non int entered or invalid one
+    except ValueError:
+        print("Please enter a valid value")
+        start_game(count, numberToGuess)
+ 
 # Kick off the program by calling the start_game function.
-start_game()
+print("Welcome to the Number Guessing Game!!")
+count = 1
+numberToGuess = random.randint(0,10)
+
+start_game(count, numberToGuess)
