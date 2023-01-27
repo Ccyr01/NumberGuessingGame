@@ -76,7 +76,7 @@ Continue? ''')
     #Non int entered or invalid one
     except ValueError:
         print("Please enter a valid value")
-        start_game(count, numberToGuess)
+        start_game(count, numberToGuess,highScore)
  
 # Kick off the program by calling the start_game function.
 print("Welcome to the Number Guessing Game!!")
